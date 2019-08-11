@@ -31,16 +31,14 @@ class ServiceProvider extends IlluminateServiceProvider
     }
 
     /**
-     * Register publish groups.
+     * publishGroups
      *
-     * @return void
-     * @author Morten Rugaard <moru@nodes.dk>
+     * @author Casper Rasmussen <cr@nodes.dk>
      */
     protected function publishGroups()
     {
-        // Config files
         $this->publishes([
-            __DIR__ . '/../config/nstack.php' => config_path('nstack.php'),
+            __DIR__.'/../config' => config_path(),
         ], 'config');
     }
 
@@ -48,11 +46,11 @@ class ServiceProvider extends IlluminateServiceProvider
      * Setup container binding.
      *
      * @return void
-     * @author Casper Rasmussen <moru@nodes.dk>
+     * @author Casper Rasmussen <cr@nodes.dk>
      */
     protected function setupBindings()
     {
-        $this->app->bind(NStack::classc, function ($app) {
+        $this->app->bind(NStack::class, function ($app) {
             return $app['nstack'];
         });
     }
@@ -67,6 +65,7 @@ class ServiceProvider extends IlluminateServiceProvider
     {
         $this->app->singleton('nstack', function ($app) {
             $configArray = config('nstack');
+
             $config = Config::createFromArray($configArray);
 
             return new NStack($config);
