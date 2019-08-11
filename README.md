@@ -41,11 +41,28 @@ Setup in config/app.php
 Copy config over from vendor/nstack/config/nstack.php to project/config/nstack.php
 
 ```
-php artisan vendor:publish --provider=NStack\ServiceProvider
+php artisan vendor:publish --provider="NStack\ServiceProvider"
 
 ```
 
 ## ⚙ Usage
+
+You can now call via facade, eg:
+
+````php
+\NStack::getContinentsClient()->index()
+````
+
+or via globa func
+
+```php
+nstack()->getContinentsClient()->index()
+```
+
+All PHP functionality can be found
+
+[Link](https://github.com/nstack-io/php-sdk)
+
 
 
 ## 🏆 Credits
