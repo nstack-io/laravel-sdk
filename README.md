@@ -59,9 +59,9 @@ or via globa func
 nstack()->getContinentsClient()->index()
 ```
 
-All PHP functionality can be found
+All the basic fuctionality can be found in the php-sdk
 
-[Link](https://github.com/nstack-io/php-sdk)
+[Link here](https://github.com/nstack-io/php-sdk)
 
 
 
