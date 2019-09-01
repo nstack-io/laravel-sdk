@@ -65,6 +65,11 @@ nstack()->getContinentsClient()->index()
 
 All the basic fuctionality can be found in the php-sdk
 
+## Features
+
+    [x] Register php-sdk in laravel provider, with Facade and global func
+    [x] Translate provider for localization using laravels global func: trans(key)    
+
 [Link here](https://github.com/nstack-io/php-sdk)
 
 
