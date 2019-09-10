@@ -8,9 +8,7 @@ use NStack\NStack;
 use NStack\Clients\LocalizeClient;
 use NStack\Models\Resource;
 use Illuminate\Support\Collection;
-use NStack\Exceptions\NotFoundException;
 use Carbon\Carbon;
-use NStack\Exceptions\MissingMasterKeyException;
 
 /**
  * NStackLoader for translations
@@ -111,7 +109,7 @@ class NStackLoader extends FileLoader
     {
         $cacheKey = sprintf('nstack.resource.%d', $resource->getId());
 
-        if (($data = \Cache::get($cacheKey, false)) && !$refresh) {
+        if (($data = \Cache::get($cacheKey)) && !$refresh) {
             return $data;
         }
 
@@ -189,7 +187,7 @@ class NStackLoader extends FileLoader
     {
         $cacheKey = 'nstack.availableLocales';
 
-        if (($data = \Cache::get($cacheKey, false)) && !$force) {
+        if (($data = \Cache::get($cacheKey)) && !$force) {
             return $data;
         }
 
