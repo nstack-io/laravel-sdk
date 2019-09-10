@@ -5,4 +5,5 @@ return [
     'master_key'     => null,
     'base_url'       => 'https://nstack.io',
     'version'        => 'v2',
+    'platform'       => null,
 ];
