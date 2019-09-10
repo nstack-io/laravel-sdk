@@ -2,12 +2,14 @@
 
 namespace NStack;
 
-use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
+use Illuminate\Support\Str;
+use Illuminate\Translation\TranslationServiceProvider;
+use NStack\Translation\NStackLoader;
 
 /**
  * Class ServiceProvider.
  */
-class ServiceProvider extends IlluminateServiceProvider
+class ServiceProvider extends TranslationServiceProvider
 {
     /**
      * boot
@@ -16,7 +18,9 @@ class ServiceProvider extends IlluminateServiceProvider
      */
     public function boot()
     {
-        $this->publishGroups();
+        if (!Str::contains($this->app->version(), 'Lumen')) {
+            $this->publishGroups();
+        }
     }
 
     /**
@@ -28,6 +32,7 @@ class ServiceProvider extends IlluminateServiceProvider
     {
         $this->registerManager();
         $this->setupBindings();
+        parent::register();
     }
 
     /**
@@ -52,6 +57,17 @@ class ServiceProvider extends IlluminateServiceProvider
     {
         $this->app->bind(NStack::class, function ($app) {
             return $app['nstack'];
+        });
+    }
+
+    /**
+     * {@inheritDoc}
+     * @see \Illuminate\Translation\TranslationServiceProvider::registerLoader()
+     */
+    protected function registerLoader()
+    {
+        $this->app->singleton('translation.loader', function ($app) {
+            return new NStackLoader($app['files'], $app['path.lang'], $app->get('nstack'));
         });
     }
 
