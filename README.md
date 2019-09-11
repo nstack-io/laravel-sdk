@@ -1,5 +1,9 @@
-# php-sdk
+# Laravel-sdk
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nstack-io/laravel-sdk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nstack-io/laravel-sdk/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/nstack-io/laravel-sdk/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/nstack-io/laravel-sdk/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/nstack-io/laravel-sdk/badges/build.png?b=master)](https://scrutinizer-ci.com/g/nstack-io/laravel-sdk/build-status/master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/nstack-io/laravel-sdk/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
 ## 📝 Introduction
 
@@ -71,11 +75,22 @@ or via global function
 nstack()->getContinentsClient()->index()
 ```
 
+
 or via integration with `trans()` [helper](https://laravel.com/docs/5.8/helpers#method-trans)
 
 ```php
 echo trans('messages.welcome');
 ```
+
+
+All the basic fuctionality can be found in the php-sdk
+
+## Features
+
+    [x] Register php-sdk in laravel provider, with Facade and global func
+    [x] Translate provider for localization using laravels global func: trans(key)    
+
+[Link here](https://github.com/nstack-io/php-sdk)
 
 All PHP functionality can be found
 
