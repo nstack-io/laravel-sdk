@@ -15,7 +15,7 @@ To install this package you will need:
 
 * PHP 7.1+
 
-Run 
+Run
 
 `composer require nstack/laravel-sdk`
 
@@ -23,18 +23,30 @@ or setup in composer.json
 
 `nstack/laravel-sdk: 1.0.x`
 
+In `config/app.php` (Laravel) or `bootstrap/app.php` (Lumen) you should replace Laravel's translation service provider
+
+```php
+Illuminate\Translation\TranslationServiceProvider::class,
+```
+
+by the one included in this package:
+
+```php
+NStack\ServiceProvider::class
+```
 
 Setup in config/app.php
 
 ```php
 
-'providers' => 
+'providers' =>
 [
     ....
+    // Illuminate\Translation\TranslationServiceProvider::class
     NStack\ServiceProvider::class
 ]
 
-'aliases' => 
+'aliases' =>
 [
     ....
     'NStack'       => NStack\Facade::class,
@@ -57,11 +69,19 @@ You can now call via facade, eg:
 \NStack::getContinentsClient()->index()
 ````
 
-or via globa func
+or via global function
 
 ```php
 nstack()->getContinentsClient()->index()
 ```
+
+
+or via integration with `trans()` [helper](https://laravel.com/docs/5.8/helpers#method-trans)
+
+```php
+echo trans('messages.welcome');
+```
+
 
 All the basic fuctionality can be found in the php-sdk
 
@@ -72,7 +92,9 @@ All the basic fuctionality can be found in the php-sdk
 
 [Link here](https://github.com/nstack-io/php-sdk)
 
+All PHP functionality can be found
 
+[Link](https://github.com/nstack-io/php-sdk)
 
 ## 🏆 Credits
 
