@@ -2,19 +2,18 @@
 
 namespace NStack\Translation;
 
-use Illuminate\Translation\FileLoader;
+use Carbon\Carbon;
 use Illuminate\Filesystem\Filesystem;
-use NStack\NStack;
+use Illuminate\Support\Collection;
+use Illuminate\Translation\FileLoader;
 use NStack\Clients\LocalizeClient;
 use NStack\Models\Resource;
-use Illuminate\Support\Collection;
-use Carbon\Carbon;
+use NStack\NStack;
 
 /**
  * NStackLoader for translations
  *
  * @author Pawel Wilk <pawi@nodesagency.com>
- *
  */
 class NStackLoader extends FileLoader
 {
@@ -61,10 +60,11 @@ class NStackLoader extends FileLoader
      * Constructor
      *
      * @param Filesystem $files
-     * @param string $path
-     * @param NStack $nstack
+     * @param string     $path
+     * @param NStack     $nstack
      */
-    public function __construct(Filesystem $files, $path, NStack $nstack) {
+    public function __construct(Filesystem $files, $path, NStack $nstack)
+    {
         parent::__construct($files, $path);
 
         $this->nstack = $nstack;
@@ -101,8 +101,7 @@ class NStackLoader extends FileLoader
      * Download and cache translations
      *
      * @param Resource $resource
-     * @param bool $refresh
-     *
+     * @param bool     $refresh
      * @return array
      */
     protected function loadTranslations(Resource $resource, $refresh = true)
@@ -155,7 +154,8 @@ class NStackLoader extends FileLoader
      */
     protected function findResource($locale)
     {
-        foreach ($this->getResources() as $resource) { /* @var $resource \NStack\Models\Resource */
+        foreach ($this->getResources() as $resource) {
+            /* @var $resource \NStack\Models\Resource */
             if (locale_filter_matches($resource->getLanguage()->getLocale(), $locale)) {
                 return $resource;
             }
@@ -179,9 +179,12 @@ class NStackLoader extends FileLoader
     }
 
     /**
-     * Get available resources for platform
+     * getResources
      *
-     * @return Resource[]
+     * @param bool $force
+     * @return array|mixed
+     * @throws \Exception
+     * @author Casper Rasmussen <cr@nodes.dk>
      */
     protected function getResources($force = false)
     {
@@ -207,8 +210,8 @@ class NStackLoader extends FileLoader
     /**
      * shouldTryAgain.
      *
-     * @author Casper Rasmussen <cr@nodes.dk>
      * @return bool
+     * @author Casper Rasmussen <cr@nodes.dk>
      */
     private function shouldTryAgain()
     {
@@ -228,8 +231,8 @@ class NStackLoader extends FileLoader
     /**
      * performFail.
      *
-     * @author Casper Rasmussen <cr@nodes.dk>
      * @return void
+     * @author Casper Rasmussen <cr@nodes.dk>
      */
     private function performFail()
     {
