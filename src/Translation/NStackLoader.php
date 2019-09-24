@@ -182,15 +182,20 @@ class NStackLoader extends FileLoader
      * getResources
      *
      * @param bool $force
-     * @return array|mixed
+     * @return array
      * @throws \Exception
      * @author Casper Rasmussen <cr@nodes.dk>
      */
-    protected function getResources($force = false)
+    protected function getResources($force = false): array
     {
         $cacheKey = 'nstack.availableLocales';
 
         if (($data = \Cache::get($cacheKey)) && !$force) {
+
+            if (!is_array($data)) {
+                throw new \Exception('Cached data is not array');
+            }
+
             return $data;
         }
 
