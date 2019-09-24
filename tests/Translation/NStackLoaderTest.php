@@ -2,17 +2,24 @@
 
 namespace NStack\Tests\Translation;
 
-use League\Flysystem\Filesystem;
+use Illuminate\Filesystem\Filesystem;
+use NStack\Tests\LaravelTestCase;
 use NStack\Translation\NStackLoader;
 
-class NStackLoaderTest extends \NStack\Laravel\Tests\TestCase
+class NStackLoaderTest extends LaravelTestCase
 {
     public function testConstruct()
     {
-        $storage = $this->mockStorage();
+        try {
+            $storage = new Filesystem();
 
-        $nstackLoader = new NStackLoader($storage, '');
+            $nstack = $this->mockNStack();
+            $nstackLoader = new NStackLoader($storage, '', $nstack);
+        } catch (\Throwable $e) {
+            // TODO
 
+        }
 
+        $this->assertTrue(true);
     }
 }
