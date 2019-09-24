@@ -79,7 +79,7 @@ class ServiceProvider extends TranslationServiceProvider
      */
     public function registerManager()
     {
-        $this->app->singleton('nstack', function ($app) {
+        $this->app->singleton('nstack', function () {
             $configArray = config('nstack');
 
             $config = Config::createFromArray($configArray);
