@@ -7,13 +7,6 @@
     ],
     "license": "MIT",
     "homepage": "http://nodesagency.com",
-    "authors": [
-        {
-            "name": "Casper Rasmussen",
-            "email": "cr@nodes.dk",
-            "role": "CTO & Partner"
-        }
-    ],
     "require": {
         "php": "^7.1",
         "nstack/php-sdk": "1.0.*",
