@@ -98,7 +98,7 @@ All PHP functionality can be found
 
 ## 🏆 Credits
 
-This package is developed and maintained by the PHP team at [Nodes](http://nodesagency.com)
+This package is developed and maintained by the PHP team at [Monstarlab](http://monstar-lab.com)
 
 ## 📄 License
 
